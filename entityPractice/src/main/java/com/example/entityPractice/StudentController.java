@@ -5,17 +5,24 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.lang.annotation.Retention;
+
+@RestController
 @RequiredArgsConstructor
 public class StudentController {
     private final StudentService service;
+    @TimeTrace
     @GetMapping("/identity")
-    public void saveWithIdentity(){
+    public String saveWithIdentity(){
         service.saveIdentity();
+        return "!!";
     }
+    @TimeTrace
     @GetMapping("/sequence")
-    public void saveWithSequence(){
+    public String  saveWithSequence(){
        service.saveSequence();
+        return "!!";
     }
 }
